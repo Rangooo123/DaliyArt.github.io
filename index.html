@@ -22,8 +22,49 @@
       background: #f8f8f8;
       margin-top: 3rem;
     }
+    .feature-thumb {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .feature-thumb:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+    .feature-thumb.active {
+      outline: 3px solid #3273dc;
+    }
   </style>
 </head>
+
+<script>
+  const featureThumbs = document.querySelectorAll('.feature-thumb');
+  const previewTitle = document.getElementById('feature-preview-title');
+  const previewDesc = document.getElementById('feature-preview-desc');
+  const previewInput = document.getElementById('feature-preview-input');
+  const previewOutput = document.getElementById('feature-preview-output');
+
+  featureThumbs.forEach(function (thumb) {
+    thumb.addEventListener('click', function () {
+      featureThumbs.forEach(function (item) {
+        item.classList.remove('active');
+      });
+
+      this.classList.add('active');
+
+      previewTitle.textContent = this.dataset.title;
+      previewDesc.textContent = this.dataset.desc;
+
+      previewInput.src = this.dataset.input;
+      previewOutput.src = this.dataset.output;
+
+      previewInput.style.display = 'block';
+      previewOutput.style.display = 'block';
+    });
+  });
+</script>
+  
 <body>
 
 <section class="hero is-medium">
@@ -73,24 +114,98 @@
 
 <section class="section">
   <div class="container">
-    <h2 class="title is-3 section-title">Features</h2>
-    <div class="columns">
-      <div class="column">
-        <div class="box">
-          <h3 class="title is-5">Feature 1</h3>
-          <p>Describe your first key feature.</p>
+    <h2 class="title is-3 section-title has-text-centered">Features</h2>
+    <p class="subtitle is-6 has-text-centered">
+      Click an example on the left to preview the result.
+    </p>
+
+    <div class="columns is-variable is-6 is-vcentered">
+      <!-- Left: selectable examples -->
+      <div class="column is-5">
+        <div class="columns is-mobile is-multiline">
+          <div class="column is-half">
+            <img
+              src="static/images/sample1_thumb.png"
+              alt="Example 1"
+              class="feature-thumb"
+              data-title="Example 1"
+              data-desc="This example shows the first feature result of DailyArt."
+              data-input="static/images/sample1_input.png"
+              data-output="static/images/sample1_result.gif"
+            >
+          </div>
+
+          <div class="column is-half">
+            <img
+              src="static/images/sample2_thumb.png"
+              alt="Example 2"
+              class="feature-thumb"
+              data-title="Example 2"
+              data-desc="This example shows the second feature result of DailyArt."
+              data-input="static/images/sample2_input.png"
+              data-output="static/images/sample2_result.gif"
+            >
+          </div>
+
+          <div class="column is-half">
+            <img
+              src="static/images/sample3_thumb.png"
+              alt="Example 3"
+              class="feature-thumb"
+              data-title="Example 3"
+              data-desc="This example shows the third feature result of DailyArt."
+              data-input="static/images/sample3_input.png"
+              data-output="static/images/sample3_result.gif"
+            >
+          </div>
+
+          <div class="column is-half">
+            <img
+              src="static/images/sample4_thumb.png"
+              alt="Example 4"
+              class="feature-thumb"
+              data-title="Example 4"
+              data-desc="This example shows the fourth feature result of DailyArt."
+              data-input="static/images/sample4_input.png"
+              data-output="static/images/sample4_result.gif"
+            >
+          </div>
         </div>
       </div>
-      <div class="column">
+
+      <!-- Right: preview panel -->
+      <div class="column is-7">
         <div class="box">
-          <h3 class="title is-5">Feature 2</h3>
-          <p>Describe your second key feature.</p>
-        </div>
-      </div>
-      <div class="column">
-        <div class="box">
-          <h3 class="title is-5">Feature 3</h3>
-          <p>Describe your third key feature.</p>
+          <h3 class="title is-4" id="feature-preview-title">Please select an example</h3>
+          <p id="feature-preview-desc">
+            The selected feature result will appear here.
+          </p>
+
+          <div class="columns mt-4">
+            <div class="column">
+              <p class="mb-2">
+                <span class="tag is-success">Input</span>
+              </p>
+              <img
+                id="feature-preview-input"
+                src=""
+                alt="Input preview"
+                style="width: 100%; border-radius: 10px; display: none;"
+              >
+            </div>
+
+            <div class="column">
+              <p class="mb-2">
+                <span class="tag is-link">Output</span>
+              </p>
+              <img
+                id="feature-preview-output"
+                src=""
+                alt="Output preview"
+                style="width: 100%; border-radius: 10px; display: none;"
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>
