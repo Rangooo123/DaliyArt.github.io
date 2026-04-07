@@ -26,7 +26,40 @@
       color: var(--apple-text);
       background: #ffffff;
     }
-
+    .video-cover-wrapper {
+      position: relative;
+      width: 80%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    
+    .video-cover {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+    }
+    
+    .video-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 72px;
+      height: 72px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.55);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    
+    .video-cover-wrapper:hover .video-play-button {
+      transform: translate(-50%, -50%) scale(1.08);
+      background: rgba(0, 0, 0, 0.7);
+    }
     .section-title {
       margin-bottom: 1rem;
     }
@@ -485,10 +518,23 @@
 
   <section class="section has-background-light">
     <div class="container">
-      <h2 class="title is-3 section-title">Demo</h2>
+      <h2 class="title is-3 section-title has-text-centered">Demo Video</h2>
+      <p class="subtitle is-6 has-text-centered">Click to watch</p>
+  
       <div class="columns is-centered">
-        <div class="column is-8 has-text-centered">
-          <img src="static/images/demo.png" alt="Demo image" class="demo-img">
+        <div class="column is-10">
+          <div class="video-cover-wrapper">
+            <a href="https://www.youtube.com/watch?v=1S6Z8F7izhw" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://img.youtube.com/vi/1S6Z8F7izhw/maxresdefault.jpg"
+                alt="Demo Video Cover"
+                class="demo-img video-cover"
+              >
+              <div class="video-play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
