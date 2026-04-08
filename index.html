@@ -20,7 +20,25 @@
       --apple-card-bg: rgba(255, 255, 255, 0.72);
       --apple-card-bg-strong: rgba(255, 255, 255, 0.82);
     }
-
+    
+    .custom-input-tag,
+    .custom-output-tag {
+      border-radius: 999px;
+      padding: 0.35em 0.9em;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #333;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    
+    .custom-input-tag {
+      background-color: #E0ECD7;
+    }
+    
+    .custom-output-tag {
+      background-color: #EAC5C2;
+    }
+    
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Arial, sans-serif;
       color: var(--apple-text);
@@ -557,7 +575,7 @@
 
   <section class="section">
     <div class="container">
-      <h2 class="title is-3 section-title has-text-centered">Features</h2>
+      <h2 class="title is-3 section-title has-text-centered">Results</h2>
       <p class="subtitle is-6 has-text-centered">
         Click an example on the left to preview the result.
       </p>
@@ -625,7 +643,7 @@
             <div class="columns mt-4">
               <div class="column">
                 <p class="mb-2">
-                  <span class="tag is-success">Input</span>
+                  <span class="tag custom-input-tag">Joint Estimation</span>
                 </p>
                 <img
                   id="feature-preview-input"
@@ -637,7 +655,7 @@
 
               <div class="column">
                 <p class="mb-2">
-                  <span class="tag is-link">Output</span>
+                  <span class="tag custom-output-tag">Novel State Synthesis</span>
                 </p>
                 <img
                   id="feature-preview-output"
