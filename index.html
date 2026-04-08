@@ -20,29 +20,22 @@
       --apple-card-bg: rgba(255, 255, 255, 0.72);
       --apple-card-bg-strong: rgba(255, 255, 255, 0.82);
     }
-    
-    .custom-input-tag,
-    .custom-output-tag {
-      border-radius: 999px;
-      padding: 0.35em 0.9em;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #333;
-      border: 1px solid rgba(0,0,0,0.08);
+
+    html {
+      scroll-behavior: smooth;
     }
-    
-    .custom-input-tag {
-      background-color: #E0ECD7;
-    }
-    
-    .custom-output-tag {
-      background-color: #EAC5C2;
-    }
-    
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Arial, sans-serif;
       color: var(--apple-text);
       background: #ffffff;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
     .section-title {
@@ -53,6 +46,22 @@
       background:
         radial-gradient(circle at top left, rgba(255,255,255,0.8), rgba(255,255,255,0) 35%),
         linear-gradient(135deg, #f5f7fa, #e4ecf7);
+    }
+
+    .hero .title {
+      word-break: break-word;
+    }
+
+    .hero .subtitle {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .buttons {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
     .demo-img {
@@ -95,6 +104,48 @@
       background: #111827;
       color: #f9fafb;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .custom-input-tag,
+    .custom-output-tag {
+      border-radius: 999px;
+      padding: 0.35em 0.9em;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #333;
+      border: 1px solid rgba(0,0,0,0.08);
+      white-space: normal;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .custom-input-tag {
+      background-color: #E0ECD7;
+    }
+
+    .custom-output-tag {
+      background-color: #EAC5C2;
+    }
+
+    /* Abstract */
+    .abstract-block {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .abstract-image {
+      width: 400px;
+      max-width: 100%;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .abstract-text {
+      margin: 0;
+      line-height: 1.75;
+      word-break: break-word;
     }
 
     /* Demo video cover */
@@ -132,6 +183,13 @@
     .video-cover-wrapper:hover .video-play-button {
       transform: translate(-50%, -50%) scale(1.08);
       background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Results preview */
+    .preview-image {
+      width: 100%;
+      border-radius: 10px;
+      display: none;
     }
 
     /* =========================
@@ -175,6 +233,7 @@
       font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--apple-text);
+      min-width: 0;
     }
 
     .music-player-title .music-dot {
@@ -195,6 +254,7 @@
       color: #3a3a3c;
       cursor: pointer;
       transition: all 0.2s ease;
+      flex-shrink: 0;
     }
 
     .music-player-toggle:hover {
@@ -289,6 +349,7 @@
       font-size: 0.74rem;
       color: var(--apple-subtext);
       font-variant-numeric: tabular-nums;
+      gap: 10px;
     }
 
     .controls-row {
@@ -297,6 +358,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
     .apple-btn {
@@ -355,6 +417,7 @@
       margin-bottom: 8px;
       font-size: 0.82rem;
       color: var(--apple-subtext);
+      gap: 10px;
     }
 
     .volume-row {
@@ -410,11 +473,112 @@
       letter-spacing: 0.01em;
     }
 
+    /* Tablet + mobile */
+    @media screen and (max-width: 1023px) {
+      .video-cover-wrapper {
+        width: 100%;
+      }
+
+      .abstract-block {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .abstract-image {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* Mobile */
     @media screen and (max-width: 768px) {
+      .section {
+        padding: 2.5rem 1rem;
+      }
+
+      .container {
+        max-width: 100%;
+      }
+
+      .hero.is-medium .hero-body {
+        padding: 3rem 1.25rem;
+      }
+
+      .hero .title.is-1 {
+        font-size: 2.2rem !important;
+        line-height: 1.15;
+      }
+
+      .hero .subtitle.is-4 {
+        font-size: 1.05rem !important;
+        line-height: 1.5;
+      }
+
+      .buttons.is-centered .button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .section-title.title.is-3 {
+        font-size: 1.7rem !important;
+      }
+
+      .subtitle.is-6 {
+        line-height: 1.5;
+      }
+
+      .abstract-block {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+      }
+
+      .abstract-image {
+        width: 100%;
+      }
+
+      .abstract-text {
+        font-size: 0.98rem;
+        line-height: 1.75;
+      }
+
+      .video-play-button {
+        width: 58px;
+        height: 58px;
+        font-size: 1.2rem;
+      }
+
+      .feature-thumb {
+        border-radius: 12px;
+      }
+
+      .box {
+        padding: 1rem;
+        border-radius: 16px;
+      }
+
+      #feature-preview-title.title.is-4 {
+        font-size: 1.25rem !important;
+        line-height: 1.35;
+      }
+
+      #feature-preview-desc {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .custom-input-tag,
+      .custom-output-tag {
+        font-size: 0.82rem;
+        padding: 0.4em 0.75em;
+      }
+
       .music-player {
         right: 12px;
+        left: 12px;
         bottom: 12px;
-        width: calc(100% - 24px);
+        width: auto;
+        max-width: none;
         border-radius: 22px;
       }
 
@@ -428,8 +592,57 @@
         border-radius: 16px;
       }
 
-      .video-cover-wrapper {
-        width: 100%;
+      .track-name {
+        font-size: 0.95rem;
+      }
+
+      .track-artist {
+        font-size: 0.8rem;
+      }
+
+      .controls-row {
+        gap: 10px;
+      }
+
+      .apple-btn.small {
+        width: 40px;
+        height: 40px;
+      }
+
+      .apple-btn.primary {
+        width: 54px;
+        height: 54px;
+      }
+
+      footer {
+        padding-bottom: 6rem;
+      }
+    }
+
+    /* Very small phones */
+    @media screen and (max-width: 480px) {
+      .hero .title.is-1 {
+        font-size: 1.9rem !important;
+      }
+
+      .hero .subtitle.is-4 {
+        font-size: 0.98rem !important;
+      }
+
+      .section-title.title.is-3 {
+        font-size: 1.5rem !important;
+      }
+
+      .music-player-title {
+        font-size: 0.88rem;
+      }
+
+      .music-player-body {
+        padding: 0 12px 12px 12px;
+      }
+
+      .volume-section {
+        padding: 10px 12px;
       }
     }
   </style>
@@ -533,17 +746,13 @@
   <section class="section">
     <div class="container">
       <h2 class="title is-3 section-title">Abstract</h2>
-  
-      <div style="display: flex; align-items: center; gap: 20px;">
-        
-        <!-- 左边图片 -->
-        <img src="static/teaser.jpg" alt="image" style="width: 400px; border-radius: 8px;">
-  
-        <!-- 右边文字 -->
-        <p>
+
+      <div class="abstract-block">
+        <img src="static/teaser.jpg" alt="DailyArt teaser" class="abstract-image">
+
+        <p class="abstract-text">
           Articulated objects are essential for embodied AI and world models, yet inferring their kinematics from a single closed-state image remains challenging because crucial motion cues are often occluded. Existing methods either require multi-state observations or rely on explicit part priors, retrieval, or other auxiliary inputs that partially expose the structure to be inferred. In this work, we present DailyArt, which formulates articulated joint estimation from a single static image as a synthesis-mediated reasoning problem. Instead of directly regressing joints from a heavily occluded observation, DailyArt first synthesizes a maximally articulated opened state under the same camera view to expose articulation cues, and then estimates the full set of joint parameters from the discrepancy between the observed and synthesized states. Using a set-prediction formulation, DailyArt recovers all joints simultaneously without requiring object-specific templates, multi-view inputs, or explicit part annotations at test time. Taking estimated joints as conditions, the framework further supports part-level novel state synthesis as a downstream capability. Extensive experiments show that DailyArt achieves strong performance in articulated joint estimation and supports part-level novel state synthesis conditioned on joints.
         </p>
-  
       </div>
     </div>
   </section>
@@ -647,9 +856,9 @@
                 </p>
                 <img
                   id="feature-preview-input"
+                  class="preview-image"
                   src=""
                   alt="Input preview"
-                  style="width: 100%; border-radius: 10px; display: none;"
                 >
               </div>
 
@@ -659,9 +868,9 @@
                 </p>
                 <img
                   id="feature-preview-output"
+                  class="preview-image"
                   src=""
                   alt="Output preview"
-                  style="width: 100%; border-radius: 10px; display: none;"
                 >
               </div>
             </div>
@@ -688,9 +897,6 @@ python main.py</code></pre>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      /* =========================
-         Feature preview logic
-         ========================= */
       const featureThumbs = document.querySelectorAll(".feature-thumb");
       const previewTitle = document.getElementById("feature-preview-title");
       const previewDesc = document.getElementById("feature-preview-desc");
@@ -713,9 +919,6 @@ python main.py</code></pre>
         });
       });
 
-      /* =========================
-         Apple-style music player
-         ========================= */
       const bgm = document.getElementById("bgm");
       const musicPlayer = document.getElementById("music-player");
       const musicPlayerHeader = document.getElementById("music-player-header");
