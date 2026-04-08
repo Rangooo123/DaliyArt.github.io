@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Project</title>
+  <title>DailyArt</title>
   <meta name="description" content="My project homepage">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -491,8 +491,8 @@
   <section class="hero is-medium">
     <div class="hero-body">
       <div class="container has-text-centered">
-        <h1 class="title is-1">My Project</h1>
-        <p class="subtitle is-4">A clean and modern GitHub Pages project homepage</p>
+        <h1 class="title is-1">DailyArt</h1>
+        <p class="subtitle is-4">Discovering Articulation from Single Static Images via Latent Dynamics</p>
 
         <div class="buttons is-centered mt-4">
           <a href="https://github.com/Rangooo123/DailyArt" class="button is-dark" target="_blank" rel="noopener noreferrer">
@@ -514,11 +514,19 @@
 
   <section class="section">
     <div class="container">
-      <h2 class="title is-3 section-title">Overview</h2>
-      <p>
-        This project is designed to showcase your research, code, or product in a structured and visually appealing way.
-        You can introduce your project goals, methods, and highlights here.
-      </p>
+      <h2 class="title is-3 section-title">Abstract</h2>
+  
+      <div style="display: flex; align-items: center; gap: 20px;">
+        
+        <!-- 左边图片 -->
+        <img src="static/teaser.jpg" alt="image" style="width: 250px; border-radius: 8px;">
+  
+        <!-- 右边文字 -->
+        <p>
+          Articulated objects are essential for embodied AI and world models, yet inferring their kinematics from a single closed-state image remains challenging because crucial motion cues are often occluded. Existing methods either require multi-state observations or rely on explicit part priors, retrieval, or other auxiliary inputs that partially expose the structure to be inferred. In this work, we present DailyArt, which formulates articulated joint estimation from a single static image as a synthesis-mediated reasoning problem. Instead of directly regressing joints from a heavily occluded observation, DailyArt first synthesizes a maximally articulated opened state under the same camera view to expose articulation cues, and then estimates the full set of joint parameters from the discrepancy between the observed and synthesized states. Using a set-prediction formulation, DailyArt recovers all joints simultaneously without requiring object-specific templates, multi-view inputs, or explicit part annotations at test time. Taking estimated joints as conditions, the framework further supports part-level novel state synthesis as a downstream capability. Extensive experiments show that DailyArt achieves strong performance in articulated joint estimation and supports part-level novel state synthesis conditioned on joints.
+        </p>
+  
+      </div>
     </div>
   </section>
 
