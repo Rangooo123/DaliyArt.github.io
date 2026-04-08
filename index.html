@@ -64,6 +64,128 @@
       gap: 0.75rem;
     }
 
+    /* ── Authors row ── */
+    .authors-row {
+      margin-top: 0.9rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.1rem 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .author-name {
+      color: var(--apple-text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+
+    .author-name:hover {
+      color: var(--apple-blue);
+    }
+
+    .author-sep {
+      color: #aaa;
+      font-weight: 400;
+    }
+
+    .affil-mark {
+      font-size: 0.72em;
+      color: #888;
+      vertical-align: super;
+      line-height: 0;
+      cursor: default;
+      font-weight: 600;
+    }
+
+    .author-affil-divider {
+      width: 60px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, #ccc, transparent);
+      margin: 0.5rem auto;
+    }
+
+    /* ── Affiliations row ──
+       每单位纵向 2 行：
+         第1行：[编号]  单位名称
+         第2行：       Logo
+    */
+    .affiliations-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.8rem 2.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .affil-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;   /* 整体居中 */
+      min-width: 130px;
+    }
+
+    /* 第1行：编号 + 单位名，水平排列 */
+    .affil-header {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      color: var(--apple-text);
+      transition: opacity 0.15s ease;
+    }
+
+    .affil-header:hover {
+      opacity: 0.7;
+    }
+
+    .affil-num {
+      font-size: 0.82em;
+      font-weight: 700;
+      color: var(--apple-blue);
+      background: rgba(0, 122, 255, 0.08);
+      border: 1px solid rgba(0, 122, 255, 0.18);
+      border-radius: 4px;
+      padding: 0 6px;
+      line-height: 1.7;
+      flex-shrink: 0;
+    }
+
+    .affil-name {
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    /* 第2行：Logo */
+    .affil-logo-wrap {
+      margin-top: 6px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .affil-logo {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    /* Logo 加载失败时的文字备选 */
+    .affil-logo-text {
+      display: none;
+      font-weight: 700;
+      color: var(--apple-text);
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+
     .demo-img {
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.10);
@@ -128,7 +250,6 @@
       background-color: #EAC5C2;
     }
 
-    /* Abstract */
     .abstract-block {
       display: flex;
       align-items: center;
@@ -148,7 +269,6 @@
       word-break: break-word;
     }
 
-    /* Demo video cover */
     .video-cover-wrapper {
       position: relative;
       width: 80%;
@@ -185,7 +305,6 @@
       background: rgba(0, 0, 0, 0.7);
     }
 
-    /* Results preview */
     .preview-image {
       width: 100%;
       border-radius: 10px;
@@ -473,7 +592,6 @@
       letter-spacing: 0.01em;
     }
 
-    /* Tablet + mobile */
     @media screen and (max-width: 1023px) {
       .video-cover-wrapper {
         width: 100%;
@@ -490,7 +608,6 @@
       }
     }
 
-    /* Mobile */
     @media screen and (max-width: 768px) {
       .section {
         padding: 2.5rem 1rem;
@@ -617,9 +734,28 @@
       footer {
         padding-bottom: 6rem;
       }
+
+      .authors-row {
+        font-size: 0.95rem;
+      }
+
+      .affiliations-row {
+        gap: 0.6rem 1.5rem;
+      }
+
+      .affil-item {
+        min-width: 110px;
+      }
+
+      .affil-name {
+        font-size: 0.86rem;
+      }
+
+      .affil-logo {
+        height: 26px;
+      }
     }
 
-    /* Very small phones */
     @media screen and (max-width: 480px) {
       .hero .title.is-1 {
         font-size: 1.9rem !important;
@@ -643,6 +779,10 @@
 
       .volume-section {
         padding: 10px 12px;
+      }
+
+      .authors-row {
+        font-size: 0.88rem;
       }
     }
   </style>
@@ -719,11 +859,84 @@
     </div>
   </div>
 
+  <!-- ===================== HERO SECTION WITH AUTHORS ===================== -->
   <section class="hero is-medium">
     <div class="hero-body">
       <div class="container has-text-centered">
         <h1 class="title is-1">DailyArt</h1>
         <p class="subtitle is-4">Discovering Articulation from Single Static Images via Latent Dynamics</p>
+
+        <!-- Authors row -->
+        <div class="authors-row">
+          <!--
+            用法：复制一个 author-block，修改：
+              1. href="" → 作者个人主页
+              2. 作者名字
+              3. .affil-mark 的内容 → 对应单位编号（如 1、2、1,2）
+          -->
+          <a href="https://github.com/Rangooo123" class="author-name" target="_blank" rel="noopener noreferrer">
+            Author One<span class="affil-mark">1</span>
+          </a>
+          <span class="author-sep">,</span>
+          <a href="https://github.com/" class="author-name" target="_blank" rel="noopener noreferrer">
+            Author Two<span class="affil-mark">2</span>
+          </a>
+          <span class="author-sep">,</span>
+          <a href="https://github.com/" class="author-name" target="_blank" rel="noopener noreferrer">
+            Author Three<span class="affil-mark">1,2</span>
+          </a>
+        </div>
+
+        <div class="author-affil-divider"></div>
+
+        <!-- Affiliations row -->
+        <div class="affiliations-row">
+
+          <!--
+            用法：复制一个 .affil-item，修改以下四处：
+              1. 第1个 1            → 单位编号
+              2. href=""           → 单位官网链接
+              3. Tsinghua Univ.    → 单位名称
+              4. src=""            → 单位 Logo 图片路径
+          -->
+
+          <!-- =================== 单位 1 =================== -->
+          <div class="affil-item">
+            <!-- 第1行：编号 + 单位名（可点击跳转官网） -->
+            <a class="affil-header" href="https://www.tsinghua.edu.cn/" target="_blank" rel="noopener noreferrer" title="Tsinghua University">
+              <span class="affil-num">1</span>
+              <span class="affil-name">Tsinghua University</span>
+            </a>
+            <!-- 第2行：Logo -->
+            <div class="affil-logo-wrap">
+              <img
+                class="affil-logo"
+                src="https://www.tsinghua.edu.cn/images/logo.png"
+                alt="Tsinghua University logo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+              >
+              <span class="affil-logo-text">Logo</span>
+            </div>
+          </div>
+
+          <!-- =================== 单位 2 =================== -->
+          <div class="affil-item">
+            <a class="affil-header" href="https://www.pku.edu.cn/" target="_blank" rel="noopener noreferrer" title="Peking University">
+              <span class="affil-num">2</span>
+              <span class="affil-name">Peking University</span>
+            </a>
+            <div class="affil-logo-wrap">
+              <img
+                class="affil-logo"
+                src="https://www.pku.edu.cn/images/logo.png"
+                alt="Peking University logo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+              >
+              <span class="affil-logo-text">Logo</span>
+            </div>
+          </div>
+
+        </div>
 
         <div class="buttons is-centered mt-4">
           <a href="https://github.com/Rangooo123/DailyArt" class="button is-dark" target="_blank" rel="noopener noreferrer">
@@ -742,6 +955,7 @@
       </div>
     </div>
   </section>
+  <!-- =================== END HERO SECTION =================== -->
 
   <section class="section">
     <div class="container">
@@ -942,29 +1156,17 @@ python main.py</code></pre>
       const volumeText = document.getElementById("volume-text");
 
       const playlist = [
-        {
-          title: "Track One",
-          artist: "Background Playlist",
-          src: "static/music/1.mp3"
-        },
-        {
-          title: "Track Two",
-          artist: "Background Playlist",
-          src: "static/music/2.mp3"
-        },
-        {
-          title: "Track Three",
-          artist: "Background Playlist",
-          src: "static/music/3.mp3"
-        }
+        { title: "Track One",   artist: "Background Playlist", src: "static/music/1.mp3" },
+        { title: "Track Two",   artist: "Background Playlist", src: "static/music/2.mp3" },
+        { title: "Track Three", artist: "Background Playlist", src: "static/music/3.mp3" }
       ];
 
       let currentTrackIndex = 0;
       let isPlaying = false;
 
-      const savedVolume = localStorage.getItem("bgmVolume");
-      const savedMuted = localStorage.getItem("bgmMuted");
-      const savedCollapsed = localStorage.getItem("bgmCollapsed");
+      const savedVolume    = localStorage.getItem("bgmVolume");
+      const savedMuted      = localStorage.getItem("bgmMuted");
+      const savedCollapsed  = localStorage.getItem("bgmCollapsed");
 
       let initialVolume = savedVolume !== null ? Number(savedVolume) : 30;
       if (Number.isNaN(initialVolume)) initialVolume = 30;
@@ -972,7 +1174,6 @@ python main.py</code></pre>
       volumeSlider.value = initialVolume;
       bgm.volume = initialVolume / 100;
       volumeText.textContent = initialVolume + "%";
-
       bgm.muted = savedMuted === "true";
 
       if (savedCollapsed === "true") {
@@ -998,11 +1199,9 @@ python main.py</code></pre>
       }
 
       function updatePlayPauseIcon() {
-        if (isPlaying) {
-          playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        } else {
-          playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        }
+        playPauseBtn.innerHTML = isPlaying
+          ? '<i class="fas fa-pause"></i>'
+          : '<i class="fas fa-play"></i>';
       }
 
       function updateTrackInfo() {
@@ -1015,15 +1214,11 @@ python main.py</code></pre>
       function loadTrack(index, preserveTime = false) {
         const safeIndex = ((index % playlist.length) + playlist.length) % playlist.length;
         currentTrackIndex = safeIndex;
-
         const currentTime = preserveTime ? bgm.currentTime : 0;
         bgm.src = playlist[currentTrackIndex].src;
         bgm.load();
         updateTrackInfo();
-
-        if (preserveTime) {
-          bgm.currentTime = currentTime;
-        }
+        if (preserveTime) bgm.currentTime = currentTime;
       }
 
       async function playCurrentTrack() {
@@ -1045,11 +1240,8 @@ python main.py</code></pre>
 
       async function switchTrack(index, autoPlay = true) {
         loadTrack(index);
-        if (autoPlay) {
-          await playCurrentTrack();
-        } else {
-          pauseCurrentTrack();
-        }
+        if (autoPlay) await playCurrentTrack();
+        else pauseCurrentTrack();
       }
 
       function updateProgress() {
@@ -1066,20 +1258,16 @@ python main.py</code></pre>
       updatePlayPauseIcon();
       updateProgress();
 
-      playPauseBtn.addEventListener("click", async function () {
-        if (!isPlaying) {
-          await playCurrentTrack();
-        } else {
-          pauseCurrentTrack();
-        }
+      playPauseBtn.addEventListener("click", function () {
+        isPlaying ? pauseCurrentTrack() : playCurrentTrack();
       });
 
-      prevBtn.addEventListener("click", async function () {
-        await switchTrack(currentTrackIndex - 1, true);
+      prevBtn.addEventListener("click", function () {
+        switchTrack(currentTrackIndex - 1, true);
       });
 
-      nextBtn.addEventListener("click", async function () {
-        await switchTrack(currentTrackIndex + 1, true);
+      nextBtn.addEventListener("click", function () {
+        switchTrack(currentTrackIndex + 1, true);
       });
 
       muteBtn.addEventListener("click", function () {
@@ -1092,12 +1280,10 @@ python main.py</code></pre>
         const value = Number(this.value);
         bgm.volume = value / 100;
         volumeText.textContent = value + "%";
-
         if (value > 0 && bgm.muted) {
           bgm.muted = false;
           localStorage.setItem("bgmMuted", "false");
         }
-
         localStorage.setItem("bgmVolume", String(value));
         updateMuteIcon();
       });
@@ -1106,13 +1292,10 @@ python main.py</code></pre>
         totalTimeText.textContent = formatTime(bgm.duration);
       });
 
-      bgm.addEventListener("timeupdate", function () {
-        updateProgress();
-      });
+      bgm.addEventListener("timeupdate", updateProgress);
 
-      bgm.addEventListener("ended", async function () {
-        const nextIndex = (currentTrackIndex + 1) % playlist.length;
-        await switchTrack(nextIndex, true);
+      bgm.addEventListener("ended", function () {
+        switchTrack((currentTrackIndex + 1) % playlist.length, true);
       });
 
       progressBar.addEventListener("click", function (e) {
@@ -1126,27 +1309,19 @@ python main.py</code></pre>
       musicPlayerHeader.addEventListener("click", function (e) {
         if (e.target.closest("button")) return;
         musicPlayer.classList.toggle("collapsed");
-
-        if (musicPlayer.classList.contains("collapsed")) {
-          collapseBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-          localStorage.setItem("bgmCollapsed", "true");
-        } else {
-          collapseBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
-          localStorage.setItem("bgmCollapsed", "false");
-        }
+        collapseBtn.innerHTML = musicPlayer.classList.contains("collapsed")
+          ? '<i class="fas fa-chevron-up"></i>'
+          : '<i class="fas fa-chevron-down"></i>';
+        localStorage.setItem("bgmCollapsed", String(musicPlayer.classList.contains("collapsed")));
       });
 
       collapseBtn.addEventListener("click", function (e) {
         e.stopPropagation();
         musicPlayer.classList.toggle("collapsed");
-
-        if (musicPlayer.classList.contains("collapsed")) {
-          collapseBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-          localStorage.setItem("bgmCollapsed", "true");
-        } else {
-          collapseBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
-          localStorage.setItem("bgmCollapsed", "false");
-        }
+        collapseBtn.innerHTML = musicPlayer.classList.contains("collapsed")
+          ? '<i class="fas fa-chevron-up"></i>'
+          : '<i class="fas fa-chevron-down"></i>';
+        localStorage.setItem("bgmCollapsed", String(musicPlayer.classList.contains("collapsed")));
       });
     });
   </script>
