@@ -102,6 +102,34 @@
       font-weight: 600;
     }
 
+    /* =================== 改动1：新增 .corr-author 样式 =================== */
+    .corr-author {
+      font-size: 0.8em;
+      color: #e53935;             /* 红色醒目 */
+      vertical-align: super;
+      line-height: 0;
+      margin-left: 2px;
+      cursor: default;
+    }
+
+    /* =================== 改动2：新增 .corr-author-note 样式 =================== */
+    .corr-author-note {
+      margin-top: 0.15rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #999;
+      flex-wrap: wrap;
+    }
+
+    .corr-author-note i {
+      color: #e53935;
+    }
+    /* ================================================================ */
+
     .author-affil-divider {
       width: 60px;
       height: 1.5px;
@@ -109,11 +137,7 @@
       margin: 0.5rem auto;
     }
 
-    /* ── Affiliations row ──
-       每单位纵向 2 行：
-         第1行：[编号]  单位名称
-         第2行：       Logo
-    */
+    /* ── Affiliations row ── */
     .affiliations-row {
       display: flex;
       justify-content: center;
@@ -126,11 +150,10 @@
     .affil-item {
       display: flex;
       flex-direction: column;
-      align-items: center;   /* 整体居中 */
+      align-items: center;
       min-width: 130px;
     }
 
-    /* 第1行：编号 + 单位名，水平排列 */
     .affil-header {
       display: flex;
       align-items: center;
@@ -163,7 +186,6 @@
       white-space: nowrap;
     }
 
-    /* 第2行：Logo */
     .affil-logo-wrap {
       margin-top: 6px;
       display: flex;
@@ -177,7 +199,6 @@
       border-radius: 6px;
     }
 
-    /* Logo 加载失败时的文字备选 */
     .affil-logo-text {
       display: none;
       font-weight: 700;
@@ -754,6 +775,10 @@
       .affil-logo {
         height: 26px;
       }
+
+      .corr-author-note {
+        font-size: 0.75rem;
+      }
     }
 
     @media screen and (max-width: 480px) {
@@ -783,6 +808,10 @@
 
       .authors-row {
         font-size: 0.88rem;
+      }
+
+      .corr-author-note {
+        font-size: 0.72rem;
       }
     }
   </style>
@@ -868,12 +897,6 @@
 
         <!-- Authors row -->
         <div class="authors-row">
-          <!--
-            用法：复制一个 author-block，修改：
-              1. href="" → 作者个人主页
-              2. 作者名字
-              3. .affil-mark 的内容 → 对应单位编号（如 1、2、1,2）
-          -->
           <a href="https://rangooo123.github.io/DaliyArt.github.io/" class="author-name" target="_blank" rel="noopener noreferrer">
             Hang Zhang<span class="affil-mark">1</span>
           </a>
@@ -898,32 +921,27 @@
             Yuan Xie<span class="affil-mark">1</span>
           </a>
           <span class="author-sep">,</span>
+          <!-- =================== 改动3：Xin Tan 名字后加入邮件符号 =================== -->
           <a href="https://rangooo123.github.io/DaliyArt.github.io/" class="author-name" target="_blank" rel="noopener noreferrer">
-            Xin Tan<span class="affil-mark">1,2</span>
+            Xin Tan<span class="affil-mark">1,2</span><span class="corr-author"><i class="fas fa-envelope"></i></span>
           </a>
+        </div>
+
+        <!-- =================== 改动4：作者行下方加入通讯作者注解 =================== -->
+        <div class="corr-author-note">
+          <i class="fas fa-envelope"></i>
+          <span>Corresponding author</span>
         </div>
 
         <div class="author-affil-divider"></div>
 
         <!-- Affiliations row -->
         <div class="affiliations-row">
-
-          <!--
-            用法：复制一个 .affil-item，修改以下四处：
-              1. 第1个 1            → 单位编号
-              2. href=""           → 单位官网链接
-              3. Tsinghua Univ.    → 单位名称
-              4. src=""            → 单位 Logo 图片路径
-          -->
-
-          <!-- =================== 单位 1 =================== -->
           <div class="affil-item">
-            <!-- 第1行：编号 + 单位名（可点击跳转官网） -->
-            <a class="affil-header" href="https://rangooo123.github.io/DaliyArt.github.io/" target="_blank" rel="noopener noreferrer" title="Tsinghua University">
+            <a class="affil-header" href="https://rangooo123.github.io/DaliyArt.github.io/" target="_blank" rel="noopener noreferrer" title="East China Normal University">
               <span class="affil-num">1</span>
               <span class="affil-name">East China Normal University</span>
             </a>
-            <!-- 第2行：Logo -->
             <div class="affil-logo-wrap">
               <img
                 class="affil-logo"
