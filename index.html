@@ -102,17 +102,15 @@
       font-weight: 600;
     }
 
-    /* =================== 改动1：新增 .corr-author 样式 =================== */
     .corr-author {
       font-size: 0.8em;
-      color: #e53935;             /* 红色醒目 */
+      color: #e53935;
       vertical-align: super;
       line-height: 0;
       margin-left: 2px;
       cursor: default;
     }
 
-    /* =================== 改动2：新增 .corr-author-note 样式 =================== */
     .corr-author-note {
       margin-top: 0.15rem;
       margin-bottom: 0.5rem;
@@ -127,14 +125,6 @@
 
     .corr-author-note i {
       color: #e53935;
-    }
-    /* ================================================================ */
-
-    .author-affil-divider {
-      width: 60px;
-      height: 1.5px;
-      background: linear-gradient(90deg, transparent, #ccc, transparent);
-      margin: 0.5rem auto;
     }
 
     /* ── Affiliations row ── */
@@ -205,6 +195,58 @@
       color: var(--apple-text);
       font-size: 0.9rem;
       letter-spacing: -0.01em;
+    }
+
+    /* ── Institution names: 4 per row ── */
+    .affil-names-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .affil-name-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--apple-text);
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .affil-name-pill:hover {
+      opacity: 0.7;
+    }
+
+    .affil-pill-num {
+      font-size: 0.8em;
+      font-weight: 700;
+      color: var(--apple-blue);
+      background: rgba(0, 122, 255, 0.08);
+      border: 1px solid rgba(0, 122, 255, 0.18);
+      border-radius: 4px;
+      padding: 0 5px;
+      line-height: 1.7;
+      flex-shrink: 0;
+    }
+
+    /* ── Single logo row ── */
+    .affil-logo-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+
+    .affil-single-logo {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 8px;
     }
 
     .demo-img {
@@ -779,6 +821,18 @@
       .corr-author-note {
         font-size: 0.75rem;
       }
+
+      .affil-names-row {
+        gap: 0.4rem 1rem;
+      }
+
+      .affil-name-pill {
+        font-size: 0.85rem;
+      }
+
+      .affil-single-logo {
+        height: 28px;
+      }
     }
 
     @media screen and (max-width: 480px) {
@@ -812,6 +866,18 @@
 
       .corr-author-note {
         font-size: 0.72rem;
+      }
+
+      .affil-names-row {
+        gap: 0.3rem 0.8rem;
+      }
+
+      .affil-name-pill {
+        font-size: 0.8rem;
+      }
+
+      .affil-single-logo {
+        height: 24px;
       }
     }
   </style>
@@ -921,37 +987,45 @@
             Yuan Xie<span class="affil-mark">1</span>
           </a>
           <span class="author-sep">,</span>
-          <!-- =================== 改动3：Xin Tan 名字后加入邮件符号 =================== -->
           <a href="https://rangooo123.github.io/DaliyArt.github.io/" class="author-name" target="_blank" rel="noopener noreferrer">
             Xin Tan<span class="affil-mark">1,2</span><span class="corr-author"><i class="fas fa-envelope"></i></span>
           </a>
         </div>
 
-        <!-- =================== 改动4：作者行下方加入通讯作者注解 =================== -->
+        <!-- Corresponding author note -->
         <div class="corr-author-note">
           <i class="fas fa-envelope"></i>
           <span>Corresponding author</span>
         </div>
 
-        <div class="author-affil-divider"></div>
+        <!-- Institution names: 4 per row -->
+        <div class="affil-names-row">
+          <a href="https://rangooo123.github.io/DaliyArt.github.io/" class="affil-name-pill" target="_blank" rel="noopener noreferrer">
+            <span class="affil-pill-num">1</span>
+            <span>East China Normal University</span>
+          </a>
+          <a href="https://rangooo123.github.io/DaliyArt.github.io/" class="affil-name-pill" target="_blank" rel="noopener noreferrer">
+            <span class="affil-pill-num">2</span>
+            <span>Institution Name 2</span>
+          </a>
+          <br>
+          <a href="https://rangooo123.github.io/DaliyArt.github.io/" class="affil-name-pill" target="_blank" rel="noopener noreferrer">
+            <span class="affil-pill-num">3</span>
+            <span>Institution Name 3</span>
+          </a>
+          <a href="https://rangooo123.github.io/DaliyArt.github.io/" class="affil-name-pill" target="_blank" rel="noopener noreferrer">
+            <span class="affil-pill-num">4</span>
+            <span>Institution Name 4</span>
+          </a>
+        </div>
 
-        <!-- Affiliations row -->
-        <div class="affiliations-row">
-          <div class="affil-item">
-            <a class="affil-header" href="https://rangooo123.github.io/DaliyArt.github.io/" target="_blank" rel="noopener noreferrer" title="East China Normal University">
-              <span class="affil-num">1</span>
-              <span class="affil-name">East China Normal University</span>
-            </a>
-            <div class="affil-logo-wrap">
-              <img
-                class="affil-logo"
-                src="static/logo.png"
-                alt="University logo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-              >
-              <span class="affil-logo-text">Logo</span>
-            </div>
-          </div>
+        <!-- Single combined logo row -->
+        <div class="affil-logo-row">
+          <img
+            class="affil-single-logo"
+            src="static/logo.png"
+            alt="Institutions logo"
+          >
         </div>
 
         <div class="buttons is-centered mt-4">
